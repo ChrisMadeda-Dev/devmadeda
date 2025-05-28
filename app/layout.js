@@ -1,15 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// app/layout.js (or your RootLayout file)
+import { Geist, Geist_Mono } from "next/font/google"; // Corrected import if Geist_Mono is separate
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import CallToAction from "./components/CallToAction";
+import Navbar from "./components/Navbar"; // Assuming correct path
+import Footer from "./components/Footer"; // Assuming correct path
+import CallToAction from "./components/CallToAction"; // Assuming correct path
 
 const geistSans = Geist({
+  // Corrected variable name to match usage
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
+  // Corrected variable name to match usage
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -23,12 +26,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-      <Navbar/>
-        <main className="flex-grow pt-20">{children}</main>
-      <CallToAction/>
-      <Footer/>
+        <Navbar />
+        <main className="flex-grow pt-16 md:pt-20">{children}</main>{" "}
+        <CallToAction />
+        <Footer />
       </body>
     </html>
   );

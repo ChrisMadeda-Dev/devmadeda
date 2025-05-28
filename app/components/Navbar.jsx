@@ -4,68 +4,61 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; // Using react-icons
-
-/**
- * Navbar Component
- *
- * A clean, modern, and professional navigation bar.
- * Features a white background that becomes blurred on scroll, sticky behavior,
- * responsive hamburger menu, and animations.
- * Built with Next.js, Tailwind CSS, and Framer Motion.
- */
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Work", href: "/work" }, // Example: link to a section on the homepage
+  { name: "Work", href: "/work" },
   { name: "About", href: "/about" },
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // State for mobile menu
-  const [isScrolled, setIsScrolled] = useState(false); // State for scroll detection
-  const pathname = usePathname(); // Hook to get the current path
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-  // --- Scroll Detection Effect ---
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20); // Set true if scrolled more than 20px
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
-
-    // Cleanup function
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // --- Mobile Menu Animation Variants ---
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const mobileMenuVariants = {
     hidden: { opacity: 0, x: "100%" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "tween", ease: "easeOut", duration: 0.3 },
-    },
-    exit: {
-      opacity: 0,
-      x: "100%",
-      transition: { type: "tween", ease: "easeIn", duration: 0.3 },
-    },
+    visible: { opacity: 1, x: 0, transition: { type: "tween", ease: "easeOut", duration: 0.3 } },
+    exit: { opacity: 0, x: "100%", transition: { type: "tween", ease: "easeIn", duration: 0.3 } },
   };
 
-  const linkVariants = {
+  const mobileMenuContentVariants = { // For staggering links inside
+    hidden: {}, // Parent handles initial opacity for the block
+    visible: { transition: { staggerChildren: 0.07 } }
+  }
+
+  const linkItemVariants = { // Renamed from linkVariants for clarity
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0 },
   };
 
-  // --- Component Render ---
   return (
     <motion.header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/60" // Blurred, semi-transparent bg
-          : "bg-white" // Solid white bg
+          ? "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/60"
+          : "bg-white"
       }`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -73,7 +66,6 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Left Side: Logo --- UPDATED LOGO TEXT --- */}
           <div className="flex-shrink-0">
             <Link href="/" passHref>
               <span className="text-xl md:text-2xl font-bold text-[#1C1C1C] cursor-pointer hover:text-[#FF2400] transition-colors">
@@ -84,8 +76,6 @@ const Navbar = () => {
               </span>
             </Link>
           </div>
-
-          {/* Right Side: Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href} passHref>
@@ -100,7 +90,6 @@ const Navbar = () => {
                 </span>
               </Link>
             ))}
-            {/* CTA Button --- UPDATED BUTTON TEXT --- */}
             <Link href="/contact" passHref>
               <motion.span
                 className="inline-flex items-center justify-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#FF2400] hover:bg-[#E02000] cursor-pointer transition-colors"
@@ -111,8 +100,6 @@ const Navbar = () => {
               </motion.span>
             </Link>
           </nav>
-
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -129,22 +116,27 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (Animated) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-[#F5F5F5] overflow-hidden"
+            // --- MODIFIED CLASSES FOR FULL COVERAGE ---
+            className="md:hidden fixed top-16 left-0 right-0 bottom-0 bg-white shadow-xl border-t border-gray-200/60 overflow-y-auto"
+            // No explicit height style needed; top, left, right, bottom define its boundaries.
+            // --- END OF MODIFICATIONS ---
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
+            {/* This inner div is for padding and staggering the actual links */}
             <motion.div
-              className="px-5 pt-5 pb-6 space-y-1"
-              variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+              className="px-5 pt-5 pb-24 space-y-1" // Increased pb for scroll padding at the bottom
+              variants={mobileMenuContentVariants} // Use this for staggering the linkItemVariants
+              initial="hidden" // Stagger children won't work unless parent also has initial/animate
+              animate="visible"
             >
               {navLinks.map((link) => (
-                <motion.div key={link.name} variants={linkVariants}>
+                <motion.div key={link.name} variants={linkItemVariants}>
                   <Link href={link.href} passHref>
                     <span
                       onClick={() => setIsOpen(false)}
@@ -159,8 +151,7 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
-              {/* Mobile CTA Button --- UPDATED BUTTON TEXT --- */}
-              <motion.div variants={linkVariants} className="pt-4">
+              <motion.div variants={linkItemVariants} className="pt-4">
                 <Link href="/contact" passHref>
                   <span
                     onClick={() => setIsOpen(false)}

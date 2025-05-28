@@ -2,17 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-// --- Importing icons from react-icons with CORRECT paths ---
 import { IoMdRocket } from "react-icons/io";
 import { FaRegHandshake } from "react-icons/fa";
 import { IoDiamondOutline } from "react-icons/io5";
 
 /**
- * Strengths Component (Improved Header)
+ * Strengths Component (Refined "Glassy" Feel on White Background)
  *
- * Highlights key benefits and strengths using an icon-driven 3-column layout.
- * Features an improved section header, clean white background, Scarlet icons,
- * and subtle animations.
+ * Highlights key benefits with polished cards that aim for a subtle glassy/blurry
+ * aesthetic through transparency, soft shadows, and refined details.
  */
 
 // --- Data for the Strengths Cards ---
@@ -39,8 +37,7 @@ const strengthsData = [
 
 // --- Framer Motion Variants ---
 
-// Variants for the main strengths grid container
-const strengthsGridContainerVariants = {
+const gridContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -50,21 +47,26 @@ const strengthsGridContainerVariants = {
   },
 };
 
-// Variants for each strength card's entrance animation.
-const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
+const cardBaseVariants = {
+  hidden: { y: 50, opacity: 0, scale: 0.95 },
   visible: {
     y: 0,
     opacity: 1,
+    scale: 1,
     transition: {
       type: "spring",
       stiffness: 100,
       damping: 15,
+      staggerChildren: 0.1,
     },
   },
 };
 
-// Variants for header elements
+const cardItemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 const headerContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -77,27 +79,51 @@ const headerItemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-// --- Strength Card Sub-Component (Remains the same) ---
+// --- Strength Card Sub-Component (Simulated Glassy/Blurry Style) ---
 const StrengthCard = ({ icon: Icon, title, description }) => {
   return (
     <motion.div
-      className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out border border-gray-100/80 cursor-pointer h-full flex flex-col"
-      variants={cardVariants}
-      whileHover={{ scale: 1.04, y: -10 }}
-      transition={{ type: "spring", stiffness: 300, damping: 10 }}
+      className="text-center p-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl 
+                 border border-white/30 h-full flex flex-col cursor-pointer"
+      // bg-white/90: Slight transparency.
+      // backdrop-blur-md: Will blur its own shadow or anything subtly behind.
+      // rounded-3xl: Softer, more "glass-like" rounding.
+      // border-white/30: Very subtle "edge" highlight.
+      variants={cardBaseVariants}
+      whileHover={{
+        scale: 1.05,
+        y: -10,
+        backgroundColor: "rgba(255, 255, 255, 0.98)", // Increase opacity slightly
+        borderColor: "rgba(255, 255, 255, 0.5)",    // Make border more visible
+        boxShadow: "0 25px 35px -10px rgba(0,0,0,0.12), 0 10px 15px -8px rgba(0,0,0,0.1)", // Softer, slightly larger shadow
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 15 }}
     >
       <div className="flex-grow">
-        {Icon ? (
-          <Icon className="text-5xl md:text-6xl text-[#FF2400] mx-auto mb-6" />
-        ) : (
-          <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-6" />
-        )}
-        <h3 className="text-xl lg:text-2xl font-semibold text-[#1C1C1C] mb-4">
+        <motion.div
+          className="mx-auto mb-8 flex items-center justify-center h-20 w-20 rounded-full bg-[#FF2400]/10"
+          variants={cardItemVariants}
+        >
+          {Icon ? (
+            <Icon className="text-4xl text-[#FF2400]" />
+          ) : (
+            <div className="w-10 h-10 bg-gray-300 rounded-full" />
+          )}
+        </motion.div>
+
+        <motion.h3
+          className="text-xl lg:text-2xl font-semibold text-[#1C1C1C] mb-4"
+          variants={cardItemVariants}
+        >
           {title}
-        </h3>
-        <p className="text-base text-[#6E6E6E] leading-relaxed">
+        </motion.h3>
+
+        <motion.p
+          className="text-base text-[#6E6E6E] leading-relaxed"
+          variants={cardItemVariants}
+        >
           {description}
-        </p>
+        </motion.p>
       </div>
     </motion.div>
   );
@@ -106,11 +132,11 @@ const StrengthCard = ({ icon: Icon, title, description }) => {
 // --- Main Strengths Component ---
 const Strengths = () => {
   return (
-    <section id="strengths" className="bg-white py-20 md:py-28">
+    <section id="strengths" className="bg-white py-20 md:py-28"> {/* White Section BG */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* --- IMPROVED HEADER SECTION --- */}
+        {/* Header Section (Remains the same improved version) */}
         <motion.div
-          className="mb-16 md:mb-20 text-left" // Left-aligned header block
+          className="mb-16 md:mb-20 text-left"
           variants={headerContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -130,18 +156,16 @@ const Strengths = () => {
             communication, and results-driven solutions to every project,
             ensuring your success is at the forefront.
           </motion.p>
-          {/* Scarlet Accent Line */}
           <motion.div
             className="mt-6 h-1.5 w-24 bg-[#FF2400] rounded-full"
             variants={headerItemVariants}
           />
         </motion.div>
-        {/* --- END OF IMPROVED HEADER SECTION --- */}
 
         {/* Strengths Grid Container */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
-          variants={strengthsGridContainerVariants} // Using dedicated variants for the grid
+          variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
