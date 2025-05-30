@@ -4,8 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { FiExternalLink } from "react-icons/fi"; // Icon for the live site button
 
-// --- UPDATED Placeholder Data ---
+// --- Placeholder Data (No Changes Needed) ---
 const projects = [
   {
     slug: "bvfrancis",
@@ -13,7 +14,7 @@ const projects = [
     description: "Crafting a Trusted Online Presence for a Modern Law Firm",
     imageUrl: "/images/projects/bvfrancis/bvfrancis-hero.png",
     linkUrl: "/work/bvfrancis",
-    liveSiteUrl: "https://bvfrancis.example.com",
+    liveSiteUrl: "https://bvfrancis.vercel.app",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Responsive Design"],
   },
   {
@@ -22,31 +23,30 @@ const projects = [
     description: "Informative Platform for Visa & Travel Services",
     imageUrl: "/images/projects/flygate/flygate-hero.png",
     linkUrl: "/work/flygate",
-    liveSiteUrl: "https://flygatetravel.example.com",
+    liveSiteUrl: "https://flygate.vercel.app",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Contentful"],
   },
   {
     slug: "mekoddishkem",
     title: "Mekoddishkem Travel",
     description: "User-Friendly Visa & Travel Support Site",
-    imageUrl: "/images/projects/mekoddishkem/mekoddishkem-hero.png", // This path was different in your last input
+    imageUrl: "/images/projects/mekoddishkem/mekoddishkem-hero.png",
     linkUrl: "/work/mekoddishkem",
-    liveSiteUrl: "https://mekoddishkemtravel.example.com",
+    liveSiteUrl: "https://mekoddishkem.vercel.app",
     tags: ["Next.js", "Tailwind CSS", "Markdown"],
   },
   {
-    slug: "nipto", // CHANGED from nitpo-express
-    title: "Nipto Express Logistics", // CHANGED from Nitpo Express Logistics
+    slug: "nipto-express",
+    title: "Nipto Express Logistics",
     description: "Efficient Website for Transport Logistics Services",
-    imageUrl: "/images/projects/nipto/nipto-hero.png", // CHANGED folder from nitpo to nipto
-    linkUrl: "/work/nipto", // CHANGED from /work/nitpo-express
-    liveSiteUrl: "https://niptoexpress.example.com", // CHANGED from nitpoexpress
+    imageUrl: "/images/projects/nipto/nipto-hero.png",
+    linkUrl: "/work/nipto-express",
+    liveSiteUrl: "https://nipto.vercel.app",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Serverless"],
   },
 ];
 
-// --- Framer Motion Variants ---
-
+// --- Framer Motion Variants (No Changes Needed) ---
 const projectGridContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -78,18 +78,21 @@ const headerContainerVariants = {
     transition: { staggerChildren: 0.15, delayChildren: 0.1 },
   },
 };
+
 const headerItemVariants = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-// --- Project Card Component ---
+// --- Project Card Component (No Changes Needed) ---
 const ProjectCard = ({ project }) => {
   return (
     <motion.div
-      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-350 ease-in-out overflow-hidden group border border-gray-100/80"
       variants={cardVariants}
+      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-350 ease-in-out
+                 overflow-hidden group border border-gray-100/80 h-full flex flex-col"
     >
+      {/* Image Container */}
       <div className="relative w-full aspect-video overflow-hidden">
         <Image
           src={project.imageUrl}
@@ -99,22 +102,11 @@ const ProjectCard = ({ project }) => {
           className="w-full h-full transition-transform duration-350 ease-in-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-[3px] flex items-center justify-center
-                       opacity-0 group-hover:opacity-100 transition-all duration-350 ease-in-out p-4"
-        >
-          <Link href={project.linkUrl} passHref>
-            <span
-              className="bg-[#FF2400] text-white px-8 py-3 rounded-lg font-bold text-lg
-                         cursor-pointer shadow-lg transform transition-transform duration-200
-                         hover:scale-110 hover:bg-[#E02000]"
-            >
-              View Case Study
-            </span>
-          </Link>
-        </div>
       </div>
-      <div className="p-6">
+
+      {/* Content Container */}
+      <div className="p-6 flex flex-col flex-grow">
+        {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag, i) => (
             <span
@@ -125,28 +117,46 @@ const ProjectCard = ({ project }) => {
             </span>
           ))}
         </div>
-        <h3
-          className="text-xl font-bold text-[#1C1C1C] mb-2 truncate"
-          title={project.title}
-        >
-          {project.title}
-        </h3>
-        <p className="text-base text-[#6E6E6E] line-clamp-2 h-12">
-          {project.description}
-        </p>
-        {/* Example of how you might add the live site link - uncomment and style as needed */}
-        {/* {project.liveSiteUrl && (
-          <div className="mt-4">
+
+        {/* Title and Description */}
+        <div className="flex-grow">
+          <h3
+            className="text-xl font-bold text-[#1C1C1C] mb-2 truncate"
+            title={project.title}
+          >
+            {project.title}
+          </h3>
+          <p className="text-base text-[#6E6E6E] line-clamp-2 h-12">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Action Buttons Container */}
+        <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-4">
+          {/* Case Study Button (Primary) */}
+          <Link
+            href={project.linkUrl}
+            className="bg-[#FF2400] text-white px-5 py-2.5 rounded-lg font-bold text-sm
+                         shadow-lg transform transition-transform duration-200
+                         hover:scale-105 hover:bg-[#E02000]"
+          >
+            View Case Study
+          </Link>
+
+          {/* Live Site Button (Secondary) */}
+          {project.liveSiteUrl && (
             <a
               href={project.liveSiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#FF2400] hover:underline font-medium"
+              className="bg-white/90 text-[#FF2400] px-5 py-2.5 rounded-lg font-bold text-sm
+                         shadow-lg transform transition-transform duration-200
+                         hover:scale-105 hover:bg-white flex items-center gap-2 border border-gray-200"
             >
-              Visit Live Site &rarr;
+              Live Site <FiExternalLink />
             </a>
-          </div>
-        )} */}
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -155,9 +165,9 @@ const ProjectCard = ({ project }) => {
 // --- Main Featured Work Component ---
 const Work = () => {
   return (
-    <section id="work" className="bg-white py-20 md:py-28">
+    // --- UPDATED BACKGROUND COLOR ---
+    <section id="work" className="bg-gray-50 py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* --- IMPROVED HEADER SECTION --- */}
         <motion.div
           className="mb-16 md:mb-20 text-left"
           variants={headerContainerVariants}
@@ -184,7 +194,6 @@ const Work = () => {
             variants={headerItemVariants}
           />
         </motion.div>
-        {/* --- END OF IMPROVED HEADER SECTION --- */}
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16"
@@ -197,8 +206,6 @@ const Work = () => {
             <ProjectCard key={project.slug || index} project={project} />
           ))}
         </motion.div>
-
-        {/* Optional: View All Button (Uncomment if needed) ... */}
       </div>
     </section>
   );

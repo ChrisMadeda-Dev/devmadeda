@@ -1,14 +1,15 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image'; // Ensure Image is imported
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image"; // Ensure Image is imported
+import { FaArrowRight } from "react-icons/fa"; // Re-added for CTA button
 
 /**
- * Hero Component (Scarlet Dominant with Background Image - Adjusted Height)
+ * Hero Component (Updated Headline & Sub-headline)
  *
- * Designed to fill the viewport height below the navbar.
+ * Designed to fill the viewport height below the navbar, with a Scarlet dominant theme.
  */
 
 // --- Framer Motion Variants (no changes needed here) ---
@@ -42,35 +43,30 @@ const Hero = () => {
   return (
     <section
       className="relative w-full flex items-center justify-center overflow-hidden
-                 min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]" // --- HEIGHT ADJUSTMENT ---
-      // Mobile: 100vh - 4rem (navbar height h-16)
-      // Desktop (md+): 100vh - 5rem (navbar height md:h-20)
+                 min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]"
     >
-      {/* Background Image */}
+      {/* Background Image --- UPDATED --- */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center -z-20"
-        style={{ backgroundImage: "url(/images/2.jpg)" }} // Ensure this image exists in public/images
+        className="absolute inset-0 w-full h-full bg-cover bg-top -z-20"
+        style={{ backgroundImage: "url(/images/1.jpg)" }} // Path updated to 1.jpg
       />
 
       {/* Scarlet Overlay */}
-      <div
-        className="absolute inset-0 w-full h-full bg-[#FF2400] opacity-85 -z-10"
-      />
+      <div className="absolute inset-0 w-full h-full bg-[#FF2400] opacity-90 -z-10" />
 
       {/* Content Container */}
       <motion.div
-        className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto py-20 md:py-24" // Adjusted padding slightly
+        className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto py-20 md:py-24"
         variants={containerVariants}
         initial="hidden"
-        animate="visible" // Changed from whileInView as it's a primary hero
+        animate="visible"
       >
         {/* Headline */}
         <motion.h1
           className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight"
           variants={itemVariants}
         >
-          Is Your Website Actively Growing Your Business? Let's Build One That
-          Does.
+          Every Business Needs a Website.
         </motion.h1>
 
         {/* Sub-headline */}
@@ -78,17 +74,17 @@ const Hero = () => {
           className="text-lg sm:text-xl md:text-2xl mb-12 text-white/95 leading-relaxed"
           variants={itemVariants}
         >
-          Your website needs to be a growth engine, boosting your reputation and
-          generating opportunities. I work closely with you to create a powerful
-          online platform that attracts high-value leads and directly fuels your
-          business success.
+          In today's digital world, a powerful online presence isn't just an
+          option—it's essential. I craft high-performance, visually stunning
+          websites that build credibility, attract customers, and drive real
+          growth for your business.
         </motion.p>
 
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
           <Link href="/contact" passHref>
             <motion.div
-              className="inline-block cursor-pointer text-lg sm:text-xl font-bold px-10 py-4 rounded-lg shadow-xl bg-white text-[#FF2400] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#FF2400]"
+              className="inline-flex items-center gap-3 cursor-pointer text-lg sm:text-xl font-bold px-10 py-4 rounded-lg shadow-xl bg-white text-[#FF2400] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#FF2400]"
               whileHover={{
                 scale: 1.05,
                 backgroundColor: "#F5F5F5",
@@ -98,6 +94,8 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Start Your Project Today
+              <FaArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />{" "}
+              {/* Re-added icon */}
             </motion.div>
           </Link>
         </motion.div>

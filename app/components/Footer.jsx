@@ -144,7 +144,6 @@ const Footer = () => {
               <li className="flex items-start">
                 <FaMapMarkerAlt className="text-[#FF2400] mr-3 mt-1 flex-shrink-0 h-4 w-4" />
                 <span className="text-slate-300">
-                  [Your Street Address], <br />
                   Nairobi, Kiambu County, Kenya
                 </span>
               </li>

@@ -83,7 +83,7 @@ const headerItemVariants = {
 const StrengthCard = ({ icon: Icon, title, description }) => {
   return (
     <motion.div
-      className="text-center p-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl 
+      className="text-center p-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl
                  border border-white/30 h-full flex flex-col cursor-pointer"
       // bg-white/90: Slight transparency.
       // backdrop-blur-md: Will blur its own shadow or anything subtly behind.
@@ -94,8 +94,9 @@ const StrengthCard = ({ icon: Icon, title, description }) => {
         scale: 1.05,
         y: -10,
         backgroundColor: "rgba(255, 255, 255, 0.98)", // Increase opacity slightly
-        borderColor: "rgba(255, 255, 255, 0.5)",    // Make border more visible
-        boxShadow: "0 25px 35px -10px rgba(0,0,0,0.12), 0 10px 15px -8px rgba(0,0,0,0.1)", // Softer, slightly larger shadow
+        borderColor: "rgba(255, 255, 255, 0.5)", // Make border more visible
+        boxShadow:
+          "0 25px 35px -10px rgba(0,0,0,0.12), 0 10px 15px -8px rgba(0,0,0,0.1)", // Softer, slightly larger shadow
       }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
     >
@@ -132,7 +133,9 @@ const StrengthCard = ({ icon: Icon, title, description }) => {
 // --- Main Strengths Component ---
 const Strengths = () => {
   return (
-    <section id="strengths" className="bg-white py-20 md:py-28"> {/* White Section BG */}
+    <section id="strengths" className="bg-white py-20 md:py-28">
+      {" "}
+      {/* White Section BG */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section (Remains the same improved version) */}
         <motion.div
