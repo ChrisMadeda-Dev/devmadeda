@@ -50,33 +50,31 @@ const CallToAction = () => {
         whileInView="visible" // Animate when section is in view
         viewport={{ once: true, amount: 0.3 }} // Trigger once, when 30% visible
       >
-        {/* Headline */}
+        {/* Headline --- UPDATED --- */}
         <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-10 tracking-tight" // Increased bottom margin for new shorter headline
           variants={itemVariants}
         >
-          Ready to Elevate Your <br /> Online Presence?
+          Ready to Build Together?
         </motion.h2>
 
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
           <Link href="/contact" passHref>
             <motion.div
-              // --- CHANGES: Added inline-flex and gap for the icon ---
-              className="inline-flex items-center gap-3 cursor-pointer text-lg sm:text-xl font-bold px-12 py-4 mt-3 rounded-lg shadow-2xl bg-white text-[#FF2400]"
+              className="inline-flex items-center gap-3 cursor-pointer text-lg sm:text-xl font-bold px-12 py-4 rounded-lg shadow-2xl bg-white text-[#FF2400]"
               style={{
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
               }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 30px -10px rgba(0, 0, 0, 0.35)",
+                boxShadow: "0 20px 30px -10px rgba(0, 0, 0, 0.35)", // More prominent shadow on hover
               }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
               Get in Touch
-              {/* 2. Add the icon component */}
               <FaArrowRight className="h-5 w-5" />
             </motion.div>
           </Link>

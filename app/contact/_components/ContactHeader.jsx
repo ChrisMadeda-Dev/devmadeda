@@ -53,11 +53,6 @@ const ContactHeader = () => {
            Start Your Project
           </motion.h1>
 
-          {/* White Accent Line */}
-          <motion.div
-            className="mt-8 h-1.5 w-24 bg-white rounded-full mx-auto"
-            variants={headerItemVariants}
-          />
         </motion.div>
       </div>
     </section>

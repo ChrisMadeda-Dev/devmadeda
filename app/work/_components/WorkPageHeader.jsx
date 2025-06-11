@@ -45,12 +45,6 @@ export default function WorkPageHeader() {
           >
             Explore My Work
           </motion.h1>
-
-          {/* Animated Scarlet Accent Line (used as an underline) */}
-          <motion.div
-            className="mt-8 h-1.5 w-24 bg-white mx-auto rounded-full" // Adjusted margin
-            variants={headerItemVariants}
-          />
         </motion.div>
       </div>
     </section>

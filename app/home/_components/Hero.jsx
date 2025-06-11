@@ -75,9 +75,8 @@ const Hero = () => {
           variants={itemVariants}
         >
           In today's digital world, online presence isn't just an
-          option—it's essential. I craft great and functional
-          websites for businesses that build credibility, attract customers, and drive
-          growth for your business.
+          option—it's essential. I make websites for businesses, to build credibility, attract customers, and drive
+          growth.
         </motion.p>
 
         {/* CTA Button */}

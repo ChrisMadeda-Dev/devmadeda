@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi"; // Icon for the live site button
 
-// --- Placeholder Data ---
+// --- UPDATED Placeholder Data ---
 const projects = [
   {
     slug: "flygate",
@@ -15,7 +15,7 @@ const projects = [
     imageUrl: "/images/projects/flygate/flygate-hero.png",
     linkUrl: "/work/flygate",
     liveSiteUrl: "https://flygate.vercel.app",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Contentful"],
+    tags: ["Next.js", "Tailwind CSS", "Framer Motion"], // This data is no longer displayed but can be kept for other uses
     category: "Travel & Tourism",
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     imageUrl: "/images/projects/nipto/nipto-hero.png",
     linkUrl: "/work/nipto-express",
     liveSiteUrl: "https://nipto.vercel.app",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Serverless"],
+    tags: ["Next.js", "Tailwind CSS", "Framer Motion"], // This data is no longer displayed
     category: "Logistics",
   },
 ];
@@ -77,68 +77,66 @@ const accentLineVariants = {
   },
 };
 
-// --- Project Card Component ---
+// --- Project Card Component (Redesigned to match image) ---
 const ProjectCard = ({ project }) => {
   return (
     <motion.div
       variants={cardVariants}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-350 ease-in-out
-                 overflow-hidden group border border-gray-100/80 h-full flex flex-col"
+      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-350 ease-in-out
+                 overflow-hidden border border-gray-100/80 h-full flex flex-col"
     >
-      <div className="relative w-full aspect-video overflow-hidden">
+      {/* Image Container */}
+      <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
         <Image
           src={project.imageUrl}
           alt={project.title || "Project image"}
           layout="fill"
           objectFit="cover"
-          className="w-full h-full transition-transform duration-350 ease-in-out group-hover:scale-105"
+          className="w-full h-full" // Removed hover scale effect
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Hover overlay is removed */}
       </div>
 
+      {/* Content Container */}
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag, i) => (
-            <span
-              key={i}
-              className="bg-[#FF2400]/10 text-[#FF2400] font-medium px-3 py-1 rounded-full text-xs"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
+        {/* Title and Category */}
         <div className="flex-grow">
           <h3
-            className="text-xl font-bold text-[#1C1C1C] mb-2 truncate"
+            className="text-2xl font-bold text-[#1C1C1C] mb-1" // Slightly larger title
             title={project.title}
           >
             {project.title}
           </h3>
-          <p className="text-base text-[#6E6E6E] line-clamp-2 h-12">
-            {project.description}
+          <p className="text-base text-[#6E6E6E]">
+            {" "}
+            {/* Using project.category */}
+            {project.category || "Web Development"}
           </p>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-4">
+        {/* Action Buttons Container */}
+        <div className="mt-6 pt-4 border-t border-gray-200/80 flex items-center justify-between gap-4">
+          {/* Case Study Button (Primary) */}
           <Link
             href={project.linkUrl}
-            className="inline-block bg-[#FF2400] text-white px-5 py-2.5 rounded-lg font-bold text-sm
-                       shadow-lg transform transition-transform duration-200
-                       hover:scale-105 hover:bg-[#E02000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF2400]"
+            className="inline-block bg-[#FF2400] text-white px-6 py-2.5 rounded-lg font-bold text-sm
+                       shadow-md transform transition-transform duration-200
+                       hover:scale-105 hover:shadow-lg hover:bg-[#E02000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF2400]"
           >
             View Case Study
           </Link>
+
+          {/* Live Site Button (Secondary) */}
           {project.liveSiteUrl && (
             <a
               href={project.liveSiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-[#FF2400] transition-colors duration-200"
+              className="text-gray-400 hover:text-[#FF2400] transition-colors duration-200 p-1"
               aria-label="Visit live site"
             >
-              <FiExternalLink size={22} />
+              <FiExternalLink size={24} />
             </a>
           )}
         </div>
@@ -171,9 +169,8 @@ const Work = () => {
           />
         </motion.div>
 
-        {/* --- CHANGE HERE: max-w-5xl removed to make grid wider --- */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16"
           variants={projectGridContainerVariants}
           initial="hidden"
           whileInView="visible"
