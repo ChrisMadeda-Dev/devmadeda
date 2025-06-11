@@ -3,59 +3,50 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-// Importing necessary icons from react-icons
+// --- Importing necessary icons, including LinkedIn ---
 import {
   FaLinkedin,
-  FaGithub,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
+  FaInstagram,
 } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io"; // Alternative mail icon if preferred
+import { FaXTwitter } from "react-icons/fa6";
 
 /**
- * Footer Component (New Design based on Image)
+ * Footer Component (Minimal Design with Social Links)
  *
- * Features a multi-column layout with logo, quick links, services,
- * contact information, and social media connections on a dark background.
+ * Features a minimal, 3-column layout with essential links and
+ * contact information on a dark background.
  */
 
-// Footer Links Data (can be expanded or modified)
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" }, // Changed from "About" to match image
-  { name: "Services", href: "/#strengths" }, // Example, point to a section or page
-  // { name: "Track Shipment", href: "/track" }, // Specific to Nipto, commented out
-  { name: "My Work", href: "/work" }, // Changed from "Get a Quote"
-  { name: "Contact Us", href: "/contact" }, // Changed from "Contact"
+  { name: "About Us", href: "/about" },
+  { name: "My Work", href: "/work" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
-const serviceLinks = [
-  // Placeholder services, customize as needed
-  { name: "Web Development", href: "/services#web-development" },
-  { name: "Static Site Solutions", href: "/services#static-sites" },
-  { name: "Next.js & React", href: "/services#nextjs-react" },
-  { name: "Tailwind CSS Design", href: "/services#tailwind-css" },
-  { name: "Performance Optimization", href: "/services#performance" },
-];
-
+// --- UPDATED: Added LinkedIn link back ---
 const socialLinks = [
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/devmadeda", // YOUR LINKEDIN
+    href: "https://linkedin.com/in/devmadeda",
     icon: FaLinkedin,
   },
   {
-    name: "GitHub",
-    href: "https://github.com/DevMadeda", // YOUR GITHUB
-    icon: FaGithub,
+    name: "X",
+    href: "https://x.com/DevMadeda",
+    icon: FaXTwitter,
   },
-  // Add Twitter, Instagram, etc. if you have them
-  // { name: "Twitter", href: "#", icon: FaTwitter },
-  // { name: "Instagram", href: "#", icon: FaInstagram },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/devmadeda/",
+    icon: FaInstagram,
+  },
+  // { name: "GitHub", href: "https://github.com/DevMadeda", icon: FaGithub }, // You can uncomment this to add GitHub back
 ];
 
-// --- Framer Motion Variants ---
 const footerContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -72,21 +63,19 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-// --- Main Footer Component ---
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
     <motion.footer
-      className="bg-black text-slate-300" // Changed to bg-black
+      className="bg-black text-slate-300"
       variants={footerContainerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        {/* Top section: 4 columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
           {/* Column 1: Logo & Tagline */}
           <motion.div variants={itemVariants}>
             <Link href="/" passHref>
@@ -95,7 +84,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-sm text-slate-400">
-              Crafting Digital Experiences. {/* Your Tagline */}
+              Crafting Digital Experiences.
             </p>
           </motion.div>
 
@@ -117,25 +106,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Column 3: Our Services */}
-          <motion.div variants={itemVariants}>
-            <h5 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
-              My Services
-            </h5>
-            <ul className="space-y-3">
-              {serviceLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} passHref>
-                    <span className="text-slate-300 hover:text-[#FF2400] hover:underline text-sm transition-colors duration-200 cursor-pointer">
-                      {link.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Column 4: Contact Us */}
+          {/* Column 3: Contact Us */}
           <motion.div variants={itemVariants}>
             <h5 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
               Contact Me
@@ -153,7 +124,7 @@ const Footer = () => {
                   href="tel:+254740581585"
                   className="text-slate-300 hover:text-[#FF2400] hover:underline"
                 >
-                  +254 740 581 585 {/* Your Phone */}
+                  +254 740 581 585
                 </a>
               </li>
               <li className="flex items-center">
@@ -162,7 +133,7 @@ const Footer = () => {
                   href="mailto:devmadeda@gmail.com"
                   className="text-slate-300 hover:text-[#FF2400] hover:underline"
                 >
-                  devmadeda@gmail.com {/* Your Email */}
+                  devmadeda@gmail.com
                 </a>
               </li>
             </ul>

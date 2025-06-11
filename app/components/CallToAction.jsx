@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa"; // 1. Import the icon
 
 /**
  * CallToAction Component
@@ -18,7 +19,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.25, // Delay for each child (H2, p, button)
+      staggerChildren: 0.25, // Delay for each child (H2, button)
       delayChildren: 0.1,
     },
   },
@@ -54,36 +55,29 @@ const CallToAction = () => {
           className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight"
           variants={itemVariants}
         >
-          Ready to Elevate Your Online Presence?
+          Ready to Elevate Your <br /> Online Presence?
         </motion.h2>
-
-        {/* Sub-text */}
-        <motion.p
-          className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed"
-          variants={itemVariants}
-        >
-          Let's build a website that not only looks stunning but also delivers
-          tangible business value. Reach out today for a no-obligation
-          consultation to discuss your vision.
-        </motion.p>
 
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
           <Link href="/contact" passHref>
             <motion.div
-              className="inline-block cursor-pointer text-lg sm:text-xl font-bold px-12 py-4 rounded-lg shadow-2xl bg-white text-[#FF2400]"
+              // --- CHANGES: Added inline-flex and gap for the icon ---
+              className="inline-flex items-center gap-3 cursor-pointer text-lg sm:text-xl font-bold px-12 py-4 mt-3 rounded-lg shadow-2xl bg-white text-[#FF2400]"
               style={{
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
               }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 30px -10px rgba(0, 0, 0, 0.35)", // More prominent shadow on hover
+                boxShadow: "0 20px 30px -10px rgba(0, 0, 0, 0.35)",
               }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
-              Book Your Free Consultation
+              Get in Touch
+              {/* 2. Add the icon component */}
+              <FaArrowRight className="h-5 w-5" />
             </motion.div>
           </Link>
         </motion.div>

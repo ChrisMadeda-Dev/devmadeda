@@ -13,6 +13,7 @@ const Home
     <Strengths/>
     <Work/>
     <Testimonials/>
+    <CallToAction/>
     </>
   )
 }

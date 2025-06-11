@@ -48,11 +48,11 @@ const Hero = () => {
       {/* Background Image --- UPDATED --- */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-top -z-20"
-        style={{ backgroundImage: "url(/images/1.jpg)" }} // Path updated to 1.jpg
+        style={{ backgroundImage: "url(/images/bg1.jpg)" }} // Path updated to 1.jpg
       />
 
       {/* Scarlet Overlay */}
-      <div className="absolute inset-0 w-full h-full bg-[#FF2400] opacity-90 -z-10" />
+      <div className="absolute inset-0 w-full h-full bg-[#FF2400] opacity-87 -z-10" />
 
       {/* Content Container */}
       <motion.div
@@ -63,10 +63,10 @@ const Hero = () => {
       >
         {/* Headline */}
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight"
+          className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight"
           variants={itemVariants}
         >
-          Every Business Needs a Website.
+          Every Business Needs a Website!
         </motion.h1>
 
         {/* Sub-headline */}
@@ -74,9 +74,9 @@ const Hero = () => {
           className="text-lg sm:text-xl md:text-2xl mb-12 text-white/95 leading-relaxed"
           variants={itemVariants}
         >
-          In today's digital world, a powerful online presence isn't just an
-          option—it's essential. I craft high-performance, visually stunning
-          websites that build credibility, attract customers, and drive real
+          In today's digital world, online presence isn't just an
+          option—it's essential. I craft great and functional
+          websites for businesses that build credibility, attract customers, and drive
           growth for your business.
         </motion.p>
 

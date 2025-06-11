@@ -5,11 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { FaArrowRight } from "react-icons/fa"; // 1. Import the icon
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Work", href: "/work" },
-  { name: "About", href: "/about" },
+  { name: "My Work", href: "/work" },
+  { name: "About Me", href: "/about" },
 ];
 
 const Navbar = () => {
@@ -28,27 +28,35 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
   const mobileMenuVariants = {
     hidden: { opacity: 0, x: "100%" },
-    visible: { opacity: 1, x: 0, transition: { type: "tween", ease: "easeOut", duration: 0.3 } },
-    exit: { opacity: 0, x: "100%", transition: { type: "tween", ease: "easeIn", duration: 0.3 } },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "tween", ease: "easeOut", duration: 0.3 },
+    },
+    exit: {
+      opacity: 0,
+      x: "100%",
+      transition: { type: "tween", ease: "easeIn", duration: 0.3 },
+    },
   };
 
-  const mobileMenuContentVariants = { // For staggering links inside
-    hidden: {}, // Parent handles initial opacity for the block
-    visible: { transition: { staggerChildren: 0.07 } }
-  }
+  const mobileMenuContentVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.07 } },
+  };
 
-  const linkItemVariants = { // Renamed from linkVariants for clarity
+  const linkItemVariants = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0 },
   };
@@ -70,9 +78,7 @@ const Navbar = () => {
             <Link href="/" passHref>
               <span className="text-xl md:text-2xl font-bold text-[#1C1C1C] cursor-pointer hover:text-[#FF2400] transition-colors">
                 Dev Madeda{" "}
-                <span className="font-light text-[#6E6E6E]">
-                  | Building Up
-                </span>
+                <span className="font-light text-[#6E6E6E]">| Building Up</span>
               </span>
             </Link>
           </div>
@@ -91,12 +97,14 @@ const Navbar = () => {
               </Link>
             ))}
             <Link href="/contact" passHref>
+              {/* --- MODIFIED DESKTOP BUTTON --- */}
               <motion.span
-                className="inline-flex items-center justify-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#FF2400] hover:bg-[#E02000] cursor-pointer transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#FF2400] hover:bg-[#E02000] cursor-pointer transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Get in Touch
+                <FaArrowRight className="h-3 w-3" />
               </motion.span>
             </Link>
           </nav>
@@ -119,20 +127,16 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            // --- MODIFIED CLASSES FOR FULL COVERAGE ---
             className="md:hidden fixed top-16 left-0 right-0 bottom-0 bg-white shadow-xl border-t border-gray-200/60 overflow-y-auto"
-            // No explicit height style needed; top, left, right, bottom define its boundaries.
-            // --- END OF MODIFICATIONS ---
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            {/* This inner div is for padding and staggering the actual links */}
             <motion.div
-              className="px-5 pt-5 pb-24 space-y-1" // Increased pb for scroll padding at the bottom
-              variants={mobileMenuContentVariants} // Use this for staggering the linkItemVariants
-              initial="hidden" // Stagger children won't work unless parent also has initial/animate
+              className="px-5 pt-5 pb-24 space-y-1"
+              variants={mobileMenuContentVariants}
+              initial="hidden"
               animate="visible"
             >
               {navLinks.map((link) => (
@@ -153,11 +157,13 @@ const Navbar = () => {
               ))}
               <motion.div variants={linkItemVariants} className="pt-4">
                 <Link href="/contact" passHref>
+                  {/* --- MODIFIED MOBILE BUTTON --- */}
                   <span
                     onClick={() => setIsOpen(false)}
-                    className="block w-full px-5 py-3 text-center font-medium text-white bg-[#FF2400] rounded-md shadow hover:bg-[#E02000]"
+                    className="flex w-full items-center justify-center gap-2 px-5 py-3 text-center font-medium text-white bg-[#FF2400] rounded-md shadow hover:bg-[#E02000]"
                   >
                     Get in Touch
+                    <FaArrowRight className="h-4 w-4" />
                   </span>
                 </Link>
               </motion.div>

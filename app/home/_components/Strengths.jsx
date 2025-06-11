@@ -7,7 +7,7 @@ import { FaRegHandshake } from "react-icons/fa";
 import { IoDiamondOutline } from "react-icons/io5";
 
 /**
- * Strengths Component (Refined "Glassy" Feel on White Background)
+ * Strengths Component (Refined "Glassy" Feel with Centered Header)
  *
  * Highlights key benefits with polished cards that aim for a subtle glassy/blurry
  * aesthetic through transparency, soft shadows, and refined details.
@@ -50,9 +50,9 @@ const gridContainerVariants = {
 const cardBaseVariants = {
   hidden: { y: 50, opacity: 0, scale: 0.95 },
   visible: {
-    y: 0,
     opacity: 1,
     scale: 1,
+    y: 0,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -67,16 +67,18 @@ const cardItemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
-const headerContainerVariants = {
-  hidden: { opacity: 0 },
+// Variants for the centered header elements
+const headerItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+const accentLineVariants = {
+  hidden: { opacity: 0, scaleX: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+    scaleX: 1,
+    transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
   },
-};
-const headerItemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 // --- Strength Card Sub-Component (Simulated Glassy/Blurry Style) ---
@@ -85,18 +87,14 @@ const StrengthCard = ({ icon: Icon, title, description }) => {
     <motion.div
       className="text-center p-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl
                  border border-white/30 h-full flex flex-col cursor-pointer"
-      // bg-white/90: Slight transparency.
-      // backdrop-blur-md: Will blur its own shadow or anything subtly behind.
-      // rounded-3xl: Softer, more "glass-like" rounding.
-      // border-white/30: Very subtle "edge" highlight.
       variants={cardBaseVariants}
       whileHover={{
         scale: 1.05,
         y: -10,
-        backgroundColor: "rgba(255, 255, 255, 0.98)", // Increase opacity slightly
-        borderColor: "rgba(255, 255, 255, 0.5)", // Make border more visible
+        backgroundColor: "rgba(255, 255, 255, 0.98)",
+        borderColor: "rgba(255, 255, 255, 0.5)",
         boxShadow:
-          "0 25px 35px -10px rgba(0,0,0,0.12), 0 10px 15px -8px rgba(0,0,0,0.1)", // Softer, slightly larger shadow
+          "0 25px 35px -10px rgba(0,0,0,0.12), 0 10px 15px -8px rgba(0,0,0,0.1)",
       }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
     >
@@ -134,38 +132,30 @@ const StrengthCard = ({ icon: Icon, title, description }) => {
 const Strengths = () => {
   return (
     <section id="strengths" className="bg-white py-20 md:py-28">
-      {" "}
-      {/* White Section BG */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section (Remains the same improved version) */}
+        {/* --- MODIFIED HEADER SECTION --- */}
         <motion.div
-          className="mb-16 md:mb-20 text-left"
-          variants={headerContainerVariants}
+          className="mb-16 md:mb-20 text-center" // Centered header block
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
+          transition={{ staggerChildren: 0.2 }}
         >
           <motion.h2
             className="text-4xl md:text-5xl font-bold text-[#1C1C1C] leading-tight"
             variants={headerItemVariants}
           >
-            The Advantage of Working With Me.
+            Why Choose Me
           </motion.h2>
-          <motion.p
-            className="mt-4 text-lg md:text-xl text-[#6E6E6E] max-w-3xl leading-relaxed"
-            variants={headerItemVariants}
-          >
-            Beyond just code, I bring a commitment to excellence, clear
-            communication, and results-driven solutions to every project,
-            ensuring your success is at the forefront.
-          </motion.p>
+
+          {/* Scarlet Accent Underline */}
           <motion.div
-            className="mt-6 h-1.5 w-24 bg-[#FF2400] rounded-full"
-            variants={headerItemVariants}
+            className="mt-4 h-1.5 w-24 bg-[#FF2400] mx-auto rounded-full"
+            variants={accentLineVariants}
           />
         </motion.div>
+        {/* --- END OF MODIFIED HEADER SECTION --- */}
 
-        {/* Strengths Grid Container */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
           variants={gridContainerVariants}

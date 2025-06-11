@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         <main className="flex-grow pt-16 md:pt-20">{children}</main>{" "}
-        <CallToAction />
         <Footer />
       </body>
     </html>
