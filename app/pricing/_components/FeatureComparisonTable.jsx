@@ -46,7 +46,7 @@ const FeatureComparisonTable = () => {
     },
     {
       name: "Social Media Integration",
-      basic: "minus",
+      basic: "check",
       professional: "check",
       premium: "check",
     },

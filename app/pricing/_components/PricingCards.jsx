@@ -3,9 +3,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCheck } from "react-icons/fa"; // Using FaCheck from react-icons/fa
+import { FaCheck, FaArrowRight } from "react-icons/fa"; // Imported FaArrowRight
+import { useRouter } from "next/navigation"; // Import useRouter
 
 const PricingCards = () => {
+  const router = useRouter(); // Initialize useRouter
+
   // Define the pricing tier data for each card
   const pricingTiers = [
     {
@@ -50,12 +53,12 @@ const PricingCards = () => {
       features: [
         "Everything in Professional, plus:",
         "Unlimited Pages",
-        "Custom Feature Development",
         "Complex System Integrations",
         "Dedicated Account Manager",
         "Priority Support (24/7)",
         "Comprehensive Analytics Dashboard",
         "Annual Strategy Consultation",
+        "Custom Feature Development", // Moved Custom Feature Development to the end
       ],
       isRecommended: false,
     },
@@ -143,11 +146,13 @@ const PricingCards = () => {
                 </ul>
               </div>
 
-              {/* Get Started Button */}
+              {/* Get in Touch Button with Arrow */}
               <motion.button
                 whileTap={{ scale: 0.98 }}
+                onClick={() => router.push("/contact")} // OnClick to navigate to /contact page
                 className={`
-                  mt-auto py-3 px-6 rounded-lg text-white font-semibold transition-all duration-300 ease-in-out
+                  mt-auto py-3 px-6 rounded-lg text-white font-semibold flex items-center justify-center space-x-2
+                  transition-all duration-300 ease-in-out
                   ${
                     tier.isRecommended
                       ? "bg-[#FF2400] hover:bg-[#CC1E00]"
@@ -156,7 +161,8 @@ const PricingCards = () => {
                   focus:outline-none focus:ring-2 focus:ring-[#FF2400] focus:ring-offset-2
                 `}
               >
-                Get Started
+                <span>Get in Touch</span> {/* Button text */}
+                <FaArrowRight className="w-4 h-4" /> {/* Arrow icon */}
               </motion.button>
             </motion.div>
           ))}

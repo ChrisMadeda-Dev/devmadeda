@@ -81,7 +81,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
-          <Link href="/contact" passHref>
+          <Link href="/pricing" passHref>
             <motion.div
               className="inline-flex items-center gap-3 cursor-pointer text-lg sm:text-xl font-bold px-10 py-4 rounded-lg shadow-xl bg-white text-[#FF2400] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#FF2400]"
               whileHover={{

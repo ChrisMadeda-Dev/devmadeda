@@ -7,10 +7,10 @@ import { FaRegHandshake } from "react-icons/fa";
 import { IoDiamondOutline } from "react-icons/io5";
 
 /**
- * Strengths Component (Refined "Glassy" Feel with Centered Header)
+ * Strengths Component (Enhanced "Glassy" Feel with Centered Header)
  *
  * Highlights key benefits with polished cards that aim for a subtle glassy/blurry
- * aesthetic through transparency, soft shadows, and refined details.
+ * aesthetic through increased transparency, refined shadows, and border effects.
  */
 
 // --- Data for the Strengths Cards ---
@@ -85,16 +85,16 @@ const accentLineVariants = {
 const StrengthCard = ({ icon: Icon, title, description }) => {
   return (
     <motion.div
-      className="text-center p-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl
-                 border border-white/30 h-full flex flex-col cursor-pointer"
+      className="text-center p-8 bg-white/70 backdrop-blur-xl rounded-3xl shadow-xl
+                 border border-white/60 h-full flex flex-col cursor-pointer" // Enhanced transparency and blur, subtle border
       variants={cardBaseVariants}
       whileHover={{
         scale: 1.05,
         y: -10,
-        backgroundColor: "rgba(255, 255, 255, 0.98)",
-        borderColor: "rgba(255, 255, 255, 0.5)",
+        backgroundColor: "rgba(255, 255, 255, 0.95)", // Slightly more opaque on hover
+        borderColor: "rgba(255, 255, 255, 0.8)", // More prominent border on hover
         boxShadow:
-          "0 25px 35px -10px rgba(0,0,0,0.12), 0 10px 15px -8px rgba(0,0,0,0.1)",
+          "0 30px 40px -15px rgba(0,0,0,0.15), 0 12px 20px -10px rgba(0,0,0,0.1)", // Stronger shadow on hover
       }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
     >

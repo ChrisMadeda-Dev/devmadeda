@@ -60,7 +60,7 @@ const CallToAction = () => {
 
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
-          <Link href="/contact" passHref>
+          <Link href="/pricing" passHref>
             <motion.div
               className="inline-flex items-center gap-3 cursor-pointer text-lg sm:text-xl font-bold px-12 py-4 rounded-lg shadow-2xl bg-white text-[#FF2400]"
               style={{
@@ -74,7 +74,7 @@ const CallToAction = () => {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
-              Get in Touch
+              Get Started
               <FaArrowRight className="h-5 w-5" />
             </motion.div>
           </Link>
