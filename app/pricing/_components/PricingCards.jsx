@@ -12,7 +12,8 @@ const PricingCards = () => {
       name: "Basic Digital Presence",
       price: "KES 30,000",
       maintenanceCost: "KES 3,000/month", // Added maintenance cost
-      description: "Ideal for businesses needing a professional online kickoff.",
+      description:
+        "Ideal for businesses needing a professional online kickoff.",
       features: [
         "Responsive Web Design",
         "Up to 5 Pages",
@@ -81,15 +82,14 @@ const PricingCards = () => {
   return (
     <section className="py-16 md:py-24 bg-gray-50 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     
+        {/* Section Heading - REMOVED */}
 
         {/* Pricing Cards Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="show" // Animate to trigger on load
         >
           {pricingTiers.map((tier, index) => (
             <motion.div
@@ -123,14 +123,11 @@ const PricingCards = () => {
                 </h3>
                 {/* Main Price */}
                 <p className="text-5xl font-extrabold text-[#FF2400] mb-2">
-                  {" "}
-                  {/* Adjusted margin-bottom */}
                   {tier.price}
                 </p>
                 {/* Maintenance Cost */}
                 <p className="text-lg text-gray-500 mb-4">
-                  {" "}
-                  {/* Added for maintenance cost */}+ {tier.maintenanceCost}
+                  + {tier.maintenanceCost}
                 </p>
                 {/* Short Description */}
                 <p className="text-gray-600 mb-6">{tier.description}</p>
