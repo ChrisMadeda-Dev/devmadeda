@@ -10,6 +10,7 @@ import { FaArrowRight } from "react-icons/fa";
 const navLinks = [
   { name: "My Work", href: "/work" },
   { name: "About Me", href: "/about" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 const Navbar = () => {
@@ -81,7 +82,7 @@ const Navbar = () => {
                 <span className="text-xl md:text-2xl font-bold text-[#1C1C1C] cursor-pointer hover:text-[#FF2400] transition-colors">
                   Dev Madeda{" "}
                   <span className="font-light text-[#6E6E6E]">
-                    | Building Up
+                    | Building Visions
                   </span>
                 </span>
               </Link>

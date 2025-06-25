@@ -25,6 +25,7 @@ const quickLinks = [
   { name: "About Us", href: "/about" },
   { name: "My Work", href: "/work" },
   { name: "Contact Us", href: "/contact" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 // --- UPDATED: Added LinkedIn link back ---
@@ -84,7 +85,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-sm text-slate-400">
-              Crafting Digital Experiences.
+              Building Your Vision
             </p>
           </motion.div>
 

@@ -9,16 +9,6 @@ import { FiExternalLink } from "react-icons/fi"; // Icon for the live site butto
 // --- UPDATED Placeholder Data ---
 const projects = [
   {
-    slug: "flygate",
-    title: "Flygate Travel",
-    description: "Informative Platform for Visa & Travel Services",
-    imageUrl: "/images/projects/flygate/flygate-hero.png",
-    linkUrl: "/work/flygate",
-    liveSiteUrl: "https://flygate.vercel.app",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion"], // This data is no longer displayed but can be kept for other uses
-    category: "Travel & Tourism",
-  },
-  {
     slug: "nipto-express",
     title: "Nipto Express Logistics",
     description: "Efficient Website for Transport Logistics Services",
@@ -27,6 +17,16 @@ const projects = [
     liveSiteUrl: "https://nipto.vercel.app",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion"], // This data is no longer displayed
     category: "Logistics",
+  },
+  {
+    slug: "flygate",
+    title: "Flygate Travel",
+    description: "Informative Platform for Visa & Travel Services",
+    imageUrl: "/images/projects/flygate/flygate-hero.png",
+    linkUrl: "/work/flygate",
+    liveSiteUrl: "https://flygate.vercel.app",
+    tags: ["Next.js", "Tailwind CSS", "Framer Motion"], // This data is no longer displayed but can be kept for other uses
+    category: "Travel & Tourism",
   },
 ];
 
@@ -161,7 +161,7 @@ const Work = () => {
             className="text-4xl md:text-5xl font-bold text-[#1C1C1C] leading-tight"
             variants={headerItemVariants}
           >
-            See My Work
+            My Work
           </motion.h2>
           <motion.div
             className="mt-4 h-1.5 w-24 bg-[#FF2400] mx-auto rounded-full"

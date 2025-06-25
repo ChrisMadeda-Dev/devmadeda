@@ -16,27 +16,16 @@ const testimonialsData = [
   {
     quote:
       "Working with Dev Madeda was a game-changer. Our new website is incredibly fast, looks fantastic, and has already boosted inquiries. Highly recommended!",
-    name: "B.V. Francis",
-    title: "Managing Partner, B.V. Francis & Associates",
+    name: "Gift Wilson",
+    title: "CEO, Nipto Express Logistics",
   },
   {
     quote:
       "The professionalism and technical skill demonstrated were top-notch. The platform delivered exceeded our expectations in every way, streamlining our operations significantly.",
-    name: "Alice Mwangi",
-    title: "Operations Manager, Global Logistics Hub",
+    name: "Teresia Wairimu",
+    title: "CEO, Flygate",
   },
-  {
-    quote:
-      "Our online presence is now as vibrant as our travel packages. The process was smooth, collaborative, and the end result is a website we're truly proud of.",
-    name: "David Chen",
-    title: "Marketing Director, Wanderlust Travel Co.",
-  },
-  {
-    quote:
-      "Exceptional attention to detail and a deep understanding of modern web standards. The final product is both beautiful and highly functional.",
-    name: "Samantha Lee",
-    title: "Founder, Innovate AI Solutions",
-  },
+  
 ];
 
 // --- Framer Motion Variants ---

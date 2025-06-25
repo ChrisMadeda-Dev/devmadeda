@@ -79,7 +79,7 @@ const AboutHero = () => {
               className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#FF2400] mb-4 leading-tight"
               variants={textItemVariants}
             >
-              I'm Madeda. Crafting High-Quality Websites That Deliver Business
+              I'm Madeda. Building High-Quality Websites That Deliver Business
               Growth.
             </motion.h1>
 
