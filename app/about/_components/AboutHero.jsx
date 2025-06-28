@@ -94,7 +94,7 @@ const AboutHero = () => {
               className="text-base md:text-lg text-[#1C1C1C] mb-8 leading-relaxed"
               variants={textItemVariants}
             >
-              Based in Nairobi, I build high-performance static websites using
+              Based in Nairobi, I build high-performance brochure websites using
               Next.js & Tailwind. My focus is combining clean code with
               intuitive design to help businesses establish a powerful online
               presence and achieve growth.

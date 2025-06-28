@@ -1,84 +1,95 @@
-// components/FeatureComparisonTable.jsx
 "use client";
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCheck, FaMinus } from "react-icons/fa"; // Changed to react-icons/fa for Check and Minus
+import { FaCheck, FaMinus } from "react-icons/fa"; // Imported FaCheck and FaMinus
 
 const FeatureComparisonTable = () => {
-  // Define the data for the feature comparison table
+  // Define the data for the feature comparison table based on your document
   const featuresData = [
     {
+      name: "Design Approach",
+      basic: "Template-based with basic branding",
+      professional: "Semi-custom design with brand elements",
+      premium: "Fully bespoke design with custom UI/UX",
+    },
+    {
       name: "Number of Pages",
-      basic: "Up to 5",
-      professional: "Up to 15",
-      premium: "Unlimited",
+      basic: "3-5 static pages",
+      professional: "7-10 custom-designed pages",
+      premium: "10-15+ fully custom-designed pages",
     },
     {
-      name: "Mobile-Responsive Design",
-      basic: "check",
-      professional: "check",
-      premium: "check",
+      name: "Content Integration",
+      basic: "Client provides content",
+      professional: "Basic structure and image optimization",
+      premium: "Content strategy guidance and rich media integration",
     },
     {
-      name: "Basic SEO Optimization",
-      basic: "check",
-      professional: "check",
-      premium: "check",
+      name: "Responsiveness", // Aligned with "Mobile-Responsive Design" conceptually
+      basic: "check", // Mobile, tablet, and desktop
+      professional: "check", // Mobile, tablet, and desktop
+      premium: "check", // Mobile, tablet, and desktop
     },
     {
-      name: "Advanced SEO Strategy",
-      basic: "minus",
-      professional: "check",
-      premium: "check",
+      name: "Contact Form", // Renamed from Custom Form & Workflow Development
+      basic: "Basic",
+      professional: "Advanced",
+      premium: "Complex with conditional logic",
     },
     {
-      name: "Custom Form & Workflow Development",
-      basic: "minus",
-      professional: "check",
-      premium: "check",
+      name: "Social Media", // Renamed from Social Media Integration
+      basic: "Profile links",
+      professional: "Sharing options",
+      premium: "Advanced integration",
     },
     {
-      name: "Photo / Project Gallery",
-      basic: "minus",
-      professional: "check",
-      premium: "check",
+      name: "Basic SEO Setup", // Renamed from Basic SEO Optimization
+      basic: "Titles, meta, sitemap",
+      professional: "Improved SEO with keyword support",
+      premium: "Advanced SEO with schema and competitor research",
     },
     {
-      name: "Social Media Integration",
-      basic: "check",
-      professional: "check",
-      premium: "check",
+      name: "Google Maps",
+      basic: "Map on contact page",
+      professional: "Map on contact page",
+      premium: "Custom maps and markers",
     },
     {
-      name: "Custom Feature Development",
-      basic: "minus",
-      professional: "minus",
-      premium: "check",
+      name: "Blog Functionality",
+      basic: "minus", // Not included
+      professional: "Basic CMS setup",
+      premium: "Full CMS with training",
     },
     {
-      name: "Dedicated Account Manager",
-      basic: "minus",
-      professional: "minus",
-      premium: "check",
+      name: "Analytics", // Renamed from Monthly Performance Reports
+      basic: "minus", // Not included
+      professional: "Google Analytics setup",
+      premium: "Analytics + Search Console setup",
     },
     {
-      name: "Priority Support (24/7)",
-      basic: "minus",
-      professional: "minus",
-      premium: "check",
+      name: "Revisions",
+      basic: "1 major, 1 minor",
+      professional: "2 major, 2 minor",
+      premium: "Unlimited design, 3 content rounds",
     },
     {
-      name: "Monthly Performance Reports",
-      basic: "minus",
-      professional: "check",
-      premium: "check",
+      name: "Timeline (Approx.)",
+      basic: "1-2 weeks",
+      professional: "3-5 weeks",
+      premium: "6-10+ weeks",
     },
     {
-      name: "Annual Strategy Consultation",
-      basic: "minus",
-      professional: "minus",
-      premium: "check",
+      name: "Post-Launch Support", // Renamed from Priority Support (24/7)
+      basic: "Basic form access instructions",
+      professional: "CMS training",
+      premium: "Full training + 1-month support",
+    },
+    {
+      name: "Hosting & Domain",
+      basic: "Client managed",
+      professional: "Client managed",
+      premium: "Client managed",
     },
   ];
 
@@ -91,7 +102,7 @@ const FeatureComparisonTable = () => {
       return <FaMinus className="w-4 h-4 text-gray-400 mx-auto" />; // FaMinus icon
     }
     return (
-      <span className="text-gray-700 font-medium text-center block">
+      <span className="text-gray-700 font-medium text-center block text-sm sm:text-base">
         {value}
       </span>
     );
@@ -140,19 +151,19 @@ const FeatureComparisonTable = () => {
                   scope="col"
                   className="px-6 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider"
                 >
-                  Basic Presence
+                  Standard
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider"
                 >
-                  Professional Site
+                  Premium
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider rounded-tr-xl"
                 >
-                  Premium Brochure
+                  Custom
                 </th>
               </tr>
             </thead>

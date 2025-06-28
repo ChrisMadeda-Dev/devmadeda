@@ -91,7 +91,7 @@ const MyStory = () => {
           >
             <motion.p variants={itemVariants}>
               My fascination with building things on the web started during my
-              university days here in Nairobi. I was captivated by how lines of
+              highschool days. I was captivated by how lines of
               code could transform into interactive experiences. I quickly
               realized the immense power a well-crafted website holds for
               businesses – it's not just a page, it's a digital storefront, a
@@ -100,7 +100,7 @@ const MyStory = () => {
             </motion.p>
 
             <motion.p variants={itemVariants}>
-              Today, I specialize in developing high-performance static websites
+              Today, I specialize in developing high-performance brochure websites
               using modern technologies like{" "}
               <StyledLink href="https://nextjs.org/">Next.js</StyledLink> and{" "}
               <StyledLink href="https://tailwindcss.com/">

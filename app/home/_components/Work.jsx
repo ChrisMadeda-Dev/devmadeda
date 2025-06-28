@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi"; // Icon for the live site button
+import { FaArrowRight } from "react-icons/fa"; // Import FaArrowRight for the link
 
 // --- UPDATED Placeholder Data ---
 const projects = [
@@ -83,7 +84,7 @@ const ProjectCard = ({ project }) => {
     <motion.div
       variants={cardVariants}
       className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-350 ease-in-out
-                 overflow-hidden border border-gray-100/80 h-full flex flex-col"
+                   overflow-hidden border border-gray-100/80 h-full flex flex-col"
     >
       {/* Image Container */}
       <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
@@ -92,10 +93,9 @@ const ProjectCard = ({ project }) => {
           alt={project.title || "Project image"}
           layout="fill"
           objectFit="cover"
-          className="w-full h-full" // Removed hover scale effect
+          className="w-full h-full"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        {/* Hover overlay is removed */}
       </div>
 
       {/* Content Container */}
@@ -109,8 +109,6 @@ const ProjectCard = ({ project }) => {
             {project.title}
           </h3>
           <p className="text-base text-[#6E6E6E]">
-            {" "}
-            {/* Using project.category */}
             {project.category || "Web Development"}
           </p>
         </div>
@@ -179,6 +177,24 @@ const Work = () => {
           {projects.map((project, index) => (
             <ProjectCard key={project.slug || index} project={project} />
           ))}
+        </motion.div>
+
+        {/* "See All My Work" Text Link with Arrow */}
+        <motion.div
+          className="mt-20 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={headerItemVariants} // Reusing headerItemVariants for a fade-in effect
+        >
+          <Link
+            href="/work" // Link to your /work or /portfolio page
+            className="inline-flex items-center justify-center gap-2 text-base font-semibold text-[#FF2400] hover:text-[#E02000]
+                       transition-colors duration-300 ease-in-out group" // Added group class for hover effects
+          >
+            <span>See All My Work</span>
+            <FaArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" />
+          </Link>
         </motion.div>
       </div>
     </section>

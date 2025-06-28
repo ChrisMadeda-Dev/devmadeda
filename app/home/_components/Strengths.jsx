@@ -135,7 +135,7 @@ const Strengths = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* --- MODIFIED HEADER SECTION --- */}
         <motion.div
-          className="mb-16 md:mb-20 text-center" // Centered header block
+          className="mb-8 md:mb-12 text-center" // Centered header block
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}

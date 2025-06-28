@@ -71,9 +71,7 @@ const Navbar = () => {
             ? "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/60"
             : "bg-white"
         }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+        // Removed initial, animate, and transition props for immediate presence
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-20">
