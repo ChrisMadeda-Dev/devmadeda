@@ -9,13 +9,13 @@ const Home
  = () => {
   return (
     <>
-    <Hero/>
-    <Strengths/>
-    <Work/>
-    <Testimonials/>
-    <CallToAction/>
+      <Hero />
+      <Work />
+      <Strengths />
+      <Testimonials />
+      <CallToAction />
     </>
-  )
+  );
 }
 
 export default Home
