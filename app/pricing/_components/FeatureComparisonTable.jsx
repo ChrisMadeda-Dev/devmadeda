@@ -2,104 +2,131 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCheck, FaMinus } from "react-icons/fa"; // Imported FaCheck and FaMinus
+import { FaCheck, FaTimes } from "react-icons/fa"; // Imported FaCheck and FaTimes
 
 const FeatureComparisonTable = () => {
   // Define the data for the feature comparison table based on your document
   const featuresData = [
     {
+      name: "Ideal For",
+      starter:
+        "Individuals or small businesses needing a single-page lead generator.",
+      standard:
+        "Small businesses or professionals looking to build credibility.",
+      premium:
+        "Growing businesses ready to showcase more content and drive conversions.",
+    },
+    {
+      name: "One-Time Price (KSh)",
+      starter: "15,000",
+      standard: "30,000",
+      premium: "55,000+", // Updated price
+    },
+    {
+      name: "Monthly Maintenance (KSh)",
+      starter: "1,500",
+      standard: "3,000",
+      premium: "5,500",
+    },
+    {
+      name: "Annual Maintenance (KSh)",
+      starter: "15,000",
+      standard: "30,000",
+      premium: "55,000",
+    },
+    {
+      name: "Pages",
+      starter: "1-page (Hero, Services/About, Contact)",
+      standard: "3–5 pages",
+      premium: "7–10 pages",
+    },
+    {
       name: "Design Approach",
-      basic: "Template-based with basic branding",
-      professional: "Semi-custom design with brand elements",
-      premium: "Fully bespoke design with custom UI/UX",
+      starter: "Template-based, responsive",
+      standard: "Template-based with light branding",
+      premium: "Semi-custom design with deeper brand integration",
     },
     {
-      name: "Number of Pages",
-      basic: "3-5 static pages",
-      professional: "7-10 custom-designed pages",
-      premium: "10-15+ fully custom-designed pages",
+      name: "Content",
+      starter: "Provided by client",
+      standard: "Provided by client",
+      premium: "Provided with guidance, includes gallery setup",
     },
     {
-      name: "Content Integration",
-      basic: "Client provides content",
-      professional: "Basic structure and image optimization",
-      premium: "Content strategy guidance and rich media integration",
+      name: "Responsiveness",
+      starter: true,
+      standard: true,
+      premium: true,
     },
     {
-      name: "Responsiveness", // Aligned with "Mobile-Responsive Design" conceptually
-      basic: "check", // Mobile, tablet, and desktop
-      professional: "check", // Mobile, tablet, and desktop
-      premium: "check", // Mobile, tablet, and desktop
+      name: "Contact Form",
+      starter: "Basic (Name, Email, Message)",
+      standard: "Basic",
+      premium: "Advanced (dropdowns, etc.)",
     },
     {
-      name: "Contact Form", // Renamed from Custom Form & Workflow Development
-      basic: "Basic",
-      professional: "Advanced",
-      premium: "Complex with conditional logic",
+      name: "Social Media Links",
+      starter: "Basic links",
+      standard: "Basic links",
+      premium: "Integrated sharing options",
     },
     {
-      name: "Social Media", // Renamed from Social Media Integration
-      basic: "Profile links",
-      professional: "Sharing options",
-      premium: "Advanced integration",
-    },
-    {
-      name: "Basic SEO Setup", // Renamed from Basic SEO Optimization
-      basic: "Titles, meta, sitemap",
-      professional: "Improved SEO with keyword support",
-      premium: "Advanced SEO with schema and competitor research",
+      name: "Basic SEO Setup",
+      starter: "Titles, meta description",
+      standard: "Includes sitemap",
+      premium: "Enhanced SEO strategy",
     },
     {
       name: "Google Maps",
-      basic: "Map on contact page",
-      professional: "Map on contact page",
-      premium: "Custom maps and markers",
+      starter: false,
+      standard: true,
+      premium: true,
     },
     {
-      name: "Blog Functionality",
-      basic: "minus", // Not included
-      professional: "Basic CMS setup",
-      premium: "Full CMS with training",
+      name: "Blog",
+      starter: false,
+      standard: false,
+      premium: "Setup included (CMS, no initial posts)",
     },
     {
-      name: "Analytics", // Renamed from Monthly Performance Reports
-      basic: "minus", // Not included
-      professional: "Google Analytics setup",
-      premium: "Analytics + Search Console setup",
+      name: "Analytics",
+      starter: "Basic monitoring",
+      standard: "Basic monitoring",
+      premium: "Google Analytics setup",
     },
     {
       name: "Revisions",
-      basic: "1 major, 1 minor",
-      professional: "2 major, 2 minor",
-      premium: "Unlimited design, 3 content rounds",
+      starter: "1 round minor",
+      standard: "1 major + 1 minor",
+      premium: "2 major + 2 minor",
     },
     {
       name: "Timeline (Approx.)",
-      basic: "1-2 weeks",
-      professional: "3-5 weeks",
-      premium: "6-10+ weeks",
+      starter: "3–5 business days",
+      standard: "1–2 weeks",
+      premium: "3–5 weeks",
     },
     {
-      name: "Post-Launch Support", // Renamed from Priority Support (24/7)
-      basic: "Basic form access instructions",
-      professional: "CMS training",
-      premium: "Full training + 1-month support",
+      name: "Post-Launch Support",
+      starter: "Basic instructions",
+      standard: "Contact form access",
+      premium: "CMS training if blog is included",
     },
     {
       name: "Hosting & Domain",
-      basic: "Client managed",
-      professional: "Client managed",
-      premium: "Client managed",
+      starter: "Client buys domain, we host",
+      standard: "Client handles domain & hosting",
+      premium: "Client handles domain & hosting",
     },
   ];
 
   // Helper function to render the correct icon or text based on the feature value
   const renderFeatureValue = (value) => {
-    if (value === "check") {
-      return <FaCheck className="w-4 h-4 text-green-500 mx-auto" />; // FaCheck icon
+    if (value === true) {
+      return <FaCheck className="w-4 h-4 text-green-500 mx-auto" />;
     }
-    if (value === "minus") {
-      return <FaMinus className="w-4 h-4 text-gray-400 mx-auto" />; // FaMinus icon
+    if (value === false) {
+      return <FaTimes className="w-4 h-4 text-gray-400 mx-auto" />;
     }
     return (
       <span className="text-gray-700 font-medium text-center block text-sm sm:text-base">
@@ -151,19 +178,19 @@ const FeatureComparisonTable = () => {
                   scope="col"
                   className="px-6 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider"
                 >
-                  Standard
+                  Starter
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider"
                 >
-                  Premium
+                  Standard (Recommended)
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider rounded-tr-xl"
                 >
-                  Custom
+                  Premium
                 </th>
               </tr>
             </thead>
@@ -178,10 +205,10 @@ const FeatureComparisonTable = () => {
                     {feature.name}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    {renderFeatureValue(feature.basic)}
+                    {renderFeatureValue(feature.starter)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    {renderFeatureValue(feature.professional)}
+                    {renderFeatureValue(feature.standard)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
                     {renderFeatureValue(feature.premium)}

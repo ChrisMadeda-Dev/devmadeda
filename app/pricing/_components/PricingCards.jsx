@@ -10,50 +10,50 @@ const PricingCards = () => {
 
   const pricingTiers = [
     {
-      name: "Standard",
-      price: "KES 30,000",
-      maintenanceCost: "KES 3,000/month",
+      name: "Starter",
+      price: "KES 15,000",
+      maintenanceCost: "KES 1,500/month",
       description:
-        "Ideal for small businesses and startups establishing a foundational online presence and initial credibility.", // Shortened to 15 words
+        "Ideal for individuals or small businesses needing a single-page lead generator.",
       features: [
-        "3-5 Static Pages",
-        "Template-Based Design",
+        "1-page (Hero, Services/About, Contact)",
+        "Template-based, Responsive Design",
         "Basic Contact Form",
-        "Basic SEO & Google Map Integration",
-        "Mobile & Desktop Responsiveness",
-        "Basic Support & Training",
+        "Basic SEO Setup (Titles, Meta)",
+        "Basic Analytics Monitoring",
+        "1 Round Minor Revisions",
       ],
       isRecommended: false,
     },
     {
-      name: "Premium",
-      price: "KES 55,000",
-      maintenanceCost: "KES 5,500/month",
+      name: "Standard",
+      price: "KES 30,000",
+      maintenanceCost: "KES 3,000/month",
       description:
-        "For growing businesses enhancing their brand, showcasing more services, and actively generating leads.", // Shortened to 15 words
+        "Small businesses or professionals looking to build credibility.",
       features: [
-        "7-10 Custom Pages",
-        "Semi-Custom Design & Branding",
-        "Advanced Contact Forms",
-        "Improved SEO & Analytics Setup",
-        "Basic CMS (Blog) & Social Integration",
-        "Comprehensive Training & Revisions",
+        "3-5 Pages",
+        "Template-based with Light Branding",
+        "Basic Contact Form",
+        "Basic SEO Setup (Includes Sitemap)",
+        "Google Map Integration",
+        "Mobile & Desktop Responsiveness",
       ],
       isRecommended: true,
     },
     {
-      name: "Custom",
-      price: "KES 85,000+",
-      maintenanceCost: "KES 8,500+/month",
+      name: "Premium",
+      price: "KES 55,000+", // Updated price
+      maintenanceCost: "KES 5,500/month",
       description:
-        "For established firms seeking a unique brand presence with advanced informational display and modernization.", // Shortened to 15 words
+        "Growing businesses ready to showcase more content and drive conversions, designed to accommodate higher customer needs.", // Updated description
       features: [
-        "10-15+ Fully Custom Pages",
-        "Bespoke UI/UX Design",
-        "Complex Forms & Integrations",
-        "Advanced SEO & Analytics Suite",
-        "Full CMS with Training",
-        "Unlimited Design Revisions & 1-Month Support",
+        "7-10 Pages",
+        "Semi-Custom Design with Deeper Brand Integration",
+        "Advanced Contact Forms",
+        "Enhanced SEO Strategy",
+        "CMS (Blog) Setup & Google Analytics",
+        "Integrated Social Sharing Options",
       ],
       isRecommended: false,
     },

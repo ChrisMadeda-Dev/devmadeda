@@ -10,8 +10,8 @@ const Home
   return (
     <>
       <Hero />
-      <Work />
       <Strengths />
+      <Work />
       <Testimonials />
       <CallToAction />
     </>

@@ -48,7 +48,7 @@ const Hero = () => {
       {/* Background Image --- UPDATED --- */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-top -z-20"
-        style={{ backgroundImage: "url(/images/bg1.jpg)" }} // Path updated to 1.jpg
+        style={{ backgroundImage: "url(/images/bg1.webp)" }} // Path updated to 1.jpg
       />
 
       {/* Scarlet Overlay */}
