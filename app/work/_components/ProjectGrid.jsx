@@ -119,7 +119,7 @@ export default function ProjectGrid({ projects }) {
             key={project.slug || project.title}
             project={{
               ...project,
-              liveSiteUrl: `https://${project.slug}.vercel.app`,
+              liveSiteUrl: `${project.liveSiteUrl}`,
             }}
           />
         ))}
